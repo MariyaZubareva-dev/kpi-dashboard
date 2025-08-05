@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KPI Dashboard</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    h1 { margin-bottom: 1rem; }
+    .progress-container { margin-top: 2rem; }
+    .bar { height: 24px; background: lightgray; border-radius: 12px; overflow: hidden; margin-bottom: 1rem; }
+    .fill { height: 100%; background: green; transition: width 0.5s; }
+    .character { height: 120px; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>🌟 KPI Dashboard</h1>
+
+  <div id="user"></div>
+
+  <div class="progress-container">
+    <div class="bar"><div class="fill" id="progress" style="width: 0%"></div></div>
+    <div id="scoreText"></div>
+    <img id="characterImage" class="character" src="" alt="" />
+  </div>
+
+  <script>
+    const score = 70; // ← сюда будем подставлять данные из таблицы Google Sheets
+
+    document.getElementById('scoreText').innerText = `Баллы: ${score}`;
+    document.getElementById('progress').style.width = `${score}%`;
+
+    const imageMap = {
+      30: "kopatych.png",
+      50: "tea.png",
+      70: "nyusha.png"
+    };
+
+    let image = "";
+    if (score >= 70) image = imageMap[70];
+    else if (score >= 50) image = imageMap[50];
+    else if (score >= 30) image = imageMap[30];
+
+    if (image) {
+      document.getElementById('characterImage').src = `img/${image}`;
+      document.getElementById('characterImage').alt = "Progress character";
+    }
+  </script>
+</body>
+</html>
