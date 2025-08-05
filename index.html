@@ -26,6 +26,9 @@
 
   <script>
     const score = 70; // ← сюда будем подставлять данные из таблицы Google Sheets
+    const userName = "Мария";
+    document.getElementById('user').innerText = `Пользователь: ${userName}`;
+
 
     document.getElementById('scoreText').innerText = `Баллы: ${score}`;
     document.getElementById('progress').style.width = `${score}%`;
